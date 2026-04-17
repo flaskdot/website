@@ -10,13 +10,20 @@
             --forbes-red: #e02020;
             --forbes-black: #000000;
             --white: #ffffff;
-            --bg-light: #f4f7f6; /* الرمادي الفاتح */
+            --bg-light: #f4f7f6; /* اللون الرمادي الفاتح المطلوب */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); color: #333; overflow-x: hidden; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            background-color: var(--bg-light); 
+            color: #333; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* --- الهيدر (الجزء العلوي) --- */
+        /* --- الهيدر الثابت --- */
         .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
 
@@ -26,57 +33,43 @@
 
         .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
-        .sub-nav a:hover { color: var(--forbes-blue); }
 
-        /* --- قسم الترحيب (Hero) --- */
-        .hero { background: var(--forbes-blue); color: white; padding: 80px 10%; display: flex; align-items: center; justify-content: space-between; }
-        .hero-content { flex: 1; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero-list { list-style: none; font-size: 1.2rem; }
-        .hero-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .hero-list li::before { content: "✓"; color: #4aa3ff; font-weight: bold; }
-        
-        .hero-image { flex: 1; text-align: left; }
-        .hero-image img { max-width: 100%; height: auto; border-radius: 10px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); }
-
-        /* --- شبكة الخدمات الزجاجية --- */
-        .services-section { padding: 80px 5%; text-align: center; }
-        .section-title { font-size: 2.2rem; margin-bottom: 50px; color: var(--forbes-blue); font-weight: 800; }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+        /* --- قسم البطولة الزجاجي (Hero Section) --- */
+        .hero-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 5%;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.4); /* شفافية رمادية فاتحة */
-            backdrop-filter: blur(15px); /* تأثير الضباب */
+        .glass-hero {
+            /* تطبيق خاصية الـ Blur والخلفية الشفافة */
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 40px 20px;
-            border-radius: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            text-decoration: none;
-            color: #333;
+            
+            padding: 60px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: var(--forbes-blue);
-        }
+        .hero-content { flex: 1; padding-left: 40px; }
+        .hero-content h1 { font-size: 3.5rem; color: var(--forbes-blue); margin-bottom: 20px; font-weight: 900; }
+        .hero-list { list-style: none; font-size: 1.2rem; color: #555; }
+        .hero-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .hero-list li::before { content: "✓"; color: var(--forbes-blue); font-weight: bold; }
+        
+        .hero-image { flex: 1; text-align: left; }
+        .hero-image img { max-width: 100%; height: auto; border-radius: 20px; }
 
-        .card-icon { font-size: 3.5rem; margin-bottom: 20px; display: block; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--forbes-blue); }
-        .card p { font-size: 0.95rem; color: #666; line-height: 1.6; }
-
-        .btn-edu { display: inline-block; margin-top: 15px; padding: 8px 20px; background: var(--forbes-blue); color: white; border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
-
-        footer { background: white; padding: 40px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 40px; }
+        footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
@@ -102,66 +95,23 @@
         <a href="#">جميع الأعمال</a>
         <a href="#">VPN</a>
         <a href="#">تأسيس الشركة</a>
-        <a href="#">برامج الإدارة</a>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>حوّل مشروعك<br>الصغير</h1>
-            <ul class="hero-list">
-                <li>البحث عن أفضل المنتجات للشركات الصغيرة</li>
-                <li>مراجعات ومقارنات لإبقائك على اطلاع</li>
-                <li>نساعدك في العثور على الأدوات المناسبة</li>
-            </ul>
+    <main class="hero-container">
+        <div class="glass-hero">
+            <div class="hero-content">
+                <h1>حوّل مشروعك<br>الصغير</h1>
+                <ul class="hero-list">
+                    <li>البحث عن أفضل المنتجات للشركات الصغيرة</li>
+                    <li>مراجعات ومقارنات لإبقائك على اطلاع</li>
+                    <li>نساعدك في العثور على الأدوات المناسبة لفريقك</li>
+                </ul>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--graph-analysis-marketing-strategy-pack-people-illustrations-4712390.png" alt="آفاق">
+            </div>
         </div>
-        <div class="hero-image">
-            <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--graph-analysis-marketing-strategy-pack-people-illustrations-4712390.png" alt="آفاق">
-        </div>
-    </section>
-
-    <section class="services-section">
-        <h2 class="section-title">خدمات منصة آفاق</h2>
-        <div class="grid-container">
-            
-            <div class="card">
-                <span class="card-icon">🎓</span>
-                <h3>آفاق التعليم</h3>
-                <p>بوابة شاملة للخدمات التعليمية من الابتدائي حتى الثانوي.</p>
-                <a href="https://eservices.mohe.pna.ps/" target="_blank" class="btn-edu">انتقل للخدمة</a>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">✈️</span>
-                <h3>آفاق السفر</h3>
-                <p>وجهتكم الأولى لتنظيم رحلاتكم وإجراءات السفر بكل سهولة.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">🤝</span>
-                <h3>آفاق العطاء</h3>
-                <p>منصة للتكافل الاجتماعي ودعم المبادرات الإنسانية.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">💼</span>
-                <h3>آفاق الخدمات</h3>
-                <p>حلول متكاملة لإدارة أعمالكم وخدماتكم اليومية.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">🛡️</span>
-                <h3>شبكات VPN</h3>
-                <p>أفضل المراجعات لخدمات الحماية والخصوصية الرقمية.</p>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">📊</span>
-                <h3>إدارة المشاريع</h3>
-                <p>أدوات وبرامج ذكية لتنظيم عمل فريقك وزيادة الإنتاجية.</p>
-            </div>
-
-        </div>
-    </section>
+    </main>
 
     <footer>
         <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
