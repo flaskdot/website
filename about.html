@@ -3,124 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عن آفاق | مستشار الخدمات المتكاملة</title>
+    <title>عن آفاق | قيمنا</title>
     <style>
-        /* --- الألوان الأساسية --- */
         :root {
             --forbes-blue: #002c6b;
             --forbes-red: #e02020;
             --forbes-black: #000000;
-            --forbes-grey: #f0f2f5;
             --white: #ffffff;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9e29c 50%, #b8860b 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--forbes-grey); color: #333; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--forbes-blue); color: white; }
 
-        /* =========================================
-           نفس أكواد الشريط العلوي (لا تتغير أبداً)
-           ========================================= */
-        
-        /* 1. الشريط الأسود */
+        /* --- الهيدر الثابت (نفس الديزاين السابق) --- */
         .top-bar { background-color: var(--forbes-black); color: var(--white); padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
-        .top-bar-right { display: flex; align-items: center; gap: 8px; }
-        .top-bar-left { display: flex; align-items: center; gap: 20px; }
         .top-bar a { color: white; text-decoration: none; }
-
-        /* 2. الشريط الأبيض والشعار */
         .main-header { background-color: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
-        .header-side { width: 20%; display: flex; align-items: center; font-weight: bold; font-size: 1.2rem; }
-        .header-center { width: 60%; text-align: center; }
-        .logo-text { font-size: 2.8rem; font-weight: 900; letter-spacing: -2px; color: var(--forbes-black); text-decoration: none; font-family: serif; }
+        .logo-text { font-size: 2.8rem; font-weight: 900; color: var(--forbes-black); text-decoration: none; font-family: serif; }
         .btn-red { background-color: var(--forbes-red); color: white; padding: 8px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        .sub-nav { display: flex; justify-content: center; gap: 25px; padding: 12px 0; background-color: var(--white); border-bottom: 1px solid #eee; }
+        .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
 
-        /* 3. شريط التنقل */
-        .sub-nav { display: flex; justify-content: center; gap: 25px; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; font-weight: 500; background-color: var(--white); }
-        .sub-nav a { color: #444; text-decoration: none; transition: 0.3s; }
-        .sub-nav a:hover { color: var(--forbes-blue); }
-
-        /* =========================================
-           تنسيق محتوى صفحة "عن آفاق"
-           ========================================= */
-        .about-container {
-            max-width: 900px;
-            margin: 50px auto;
-            background-color: var(--white);
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .about-title {
-            color: var(--forbes-blue);
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            font-weight: 900;
-        }
-
-        .about-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #444;
-            text-align: justify;
-            margin-bottom: 40px;
-        }
-
-        .values-section {
-            margin-top: 40px;
-        }
-
-        .values-section h3 {
-            text-align: center;
-            color: var(--forbes-blue);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
+        /* --- لمسة جمالية للمربعات (عن آفاق) --- */
+        .about-section { padding: 60px 8%; text-align: center; }
+        .highlight-title { font-size: 2.5rem; margin-bottom: 40px; font-weight: 900; }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
         }
 
+        /* المربعات بلمسة ذهبية وشفافة (Glassmorphism) */
         .value-card {
-            background-color: var(--forbes-blue);
-            color: white;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.05); /* شفافية */
+            border: 1px solid rgba(212, 175, 55, 0.3); /* حدود ذهبية خفيفة */
+            padding: 40px 20px;
+            border-radius: 15px;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            backdrop-filter: blur(5px); /* تأثير ضبابي خلف المربع */
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* أيقونات ذهبية */
+        .value-card .icon {
+            font-size: 3rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .value-card h4 {
-            color: #4aa3ff;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            background: var(--gold-gradient); /* عناوين ذهبية */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
         }
 
-        footer { text-align: center; padding: 40px; background: #111; color: #777; font-size: 0.9rem; margin-top: 50px; }
+        .value-card p {
+            font-size: 0.95rem;
+            color: #d1d1d1;
+            line-height: 1.6;
+        }
+
+        /* خط الضوء الذهبي خلف المربعات */
+        .light-effect {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--gold-gradient);
+            top: 50%;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
+        }
+
+        footer { text-align: center; padding: 40px; background: #000; color: #777; font-size: 0.9rem; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <div class="top-bar-right">
-            <span>☰</span>
-            <a href="#">✉ اشتراك في النشرات الإخبارية</a>
-        </div>
-        <div class="top-bar-left">
-            <a href="#">بحث 🔍</a>
-        </div>
+        <div style="display: flex; gap: 10px;"><span>☰</span> <a href="#">✉ اشتراك في النشرات الإخبارية</a></div>
+        <div>بحث 🔍</div>
     </div>
 
     <header class="main-header">
-        <div class="header-side">مستشار</div>
-        <div class="header-center">
-            <a href="index.html" class="logo-text">AFAQ</a>
-        </div>
-        <div class="header-side" style="justify-content: flex-end;">
-            <a href="#" class="btn-red">يشترك</a>
-        </div>
+        <div style="width:20%; font-weight:bold;">مستشار</div>
+        <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
+        <div style="width:20%; text-align:left;"><a href="#" class="btn-red">يشترك</a></div>
     </header>
 
     <nav class="sub-nav">
@@ -129,38 +115,44 @@
         <a href="#">جميع الأعمال</a>
         <a href="#">VPN</a>
         <a href="#">تأسيس الشركة</a>
-        <a href="#">برامج الإدارة</a>
     </nav>
 
-    <main class="about-container">
-        <h1 class="about-title">‘‘نحن جسركم نحو حياة أفضل‘‘</h1>
-        
-        <p class="about-text">
-            منصة <strong>"آفاق"</strong> هي وجهة إلكترونية رائدة ومبتكرة، صُممت لتكون الجسر الذي يربط الأفراد بفرصهم المستقبلية واحتياجاتهم الأساسية في آن واحد. نحن نؤمن بأن خدمات الحياة يجب أن تكون في متناول الجميع، لذا قمنا بجمع أكثر الخدمات حيوية في منصة واحدة تتسم بالسهولة، الأمان، والسرعة.
+    <section class="about-section">
+        <h1 class="highlight-title">‘‘نحن جسركم نحو حياة أفضل‘‘</h1>
+        <p style="max-width: 800px; margin: 0 auto; color: #ccc; line-height: 2;">
+            منصة "آفاق" صُممت لتكون الجسر الذي يربط الأفراد بفرصهم المستقبلية واحتياجاتهم الأساسية في آن واحد.
         </p>
 
-        <div class="values-section">
-            <h3>قيمنا في "آفاق"</h3>
-            <div class="values-grid">
+        <div style="position: relative;">
+            <div class="light-effect"></div> <div class="values-grid">
+                
                 <div class="value-card">
+                    <span class="icon">💎</span>
                     <h4>الشفافية</h4>
-                    <p>وضوح تام في كافة الإجراءات والخدمات المقدمة.</p>
+                    <p>وضوح تام في كافة الإجراءات والخدمات المقدمة لضمان حق المستخدم.</p>
                 </div>
+
                 <div class="value-card">
+                    <span class="icon">🚀</span>
                     <h4>التمكين</h4>
-                    <p>تزويد المستخدمين بالأدوات اللازمة لتحسين جودة حياتهم.</p>
+                    <p>تزويد المستخدمين بالأدوات اللازمة لتحسين جودة حياتهم وبناء مستقبلهم.</p>
                 </div>
+
                 <div class="value-card">
+                    <span class="icon">🛡️</span>
                     <h4>الموثوقية</h4>
-                    <p>حماية بياناتكم ومعاملاتكم المالية بأحدث التقنيات.</p>
+                    <p>نعمل بأعلى معايير الأمان لحماية بياناتكم ومعاملاتكم بكل دقة.</p>
                 </div>
+
                 <div class="value-card">
+                    <span class="icon">💡</span>
                     <h4>الابتكار</h4>
-                    <p>تطوير مستمر لواجهتنا لتوفير تجربة مستخدم سلسة.</p>
+                    <p>نسعى دائماً لتطوير حلول ذكية تسهل الوصول للخدمات بضغطة زر.</p>
                 </div>
+
             </div>
         </div>
-    </main>
+    </section>
 
     <footer>
         <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
