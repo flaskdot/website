@@ -3,274 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة آفاق - جسركم نحو حياة أفضل</title>
+    <title>منصة آفاق - الرئيسية</title>
     <style>
-        /* --- الألوان والخطوط الأساسية --- */
+        /* التنسيقات العامة */
         :root {
             --primary-color: #1a2a6c;
             --secondary-color: #b21f1f;
-            --accent-color: #fdbb2d;
-            --text-dark: #2d3436;
-            --bg-light: #f9f9f9;
             --white: #ffffff;
+            --bg-light: #f9f9f9;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; line-height: 1.8; color: #333; }
+        
+        /* شريط التنقل والشعار */
+        header { background: var(--white); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        
+        /* كود الشعار الصحيح */
+        .logo img { max-height: 55px; width: auto; display: block; }
+        
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-right: 25px; }
+        .nav-links a { color: var(--primary-color); text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary-color); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: var(--text-dark);
-            scroll-behavior: smooth; /* هذه الخاصية تجعل التنقل بين الأقسام ناعماً */
-        }
-
-        /* --- شريط التنقل --- */
-        header {
-            background: var(--white);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-text {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-right: 25px;
-        }
-
-        .nav-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* --- قسم الرئيسية (الواجهة الأولى) --- */
-        .hero {
-            background: linear-gradient(rgba(26, 42, 108, 0.9), rgba(178, 31, 31, 0.8)), 
-                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-        }
-
-        /* --- خصائص عامة للأقسام --- */
-        .section-padding {
-            padding: 80px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
-        /* --- قسم "عن آفاق" --- */
-        .about-section {
-            background: var(--white);
-        }
-
-        .about-highlight {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            display: block;
-        }
-
-        .about-text {
-            text-align: justify;
-            font-size: 1.2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            color: #555;
-        }
-
-        /* --- بطاقات ماذا نقدم --- */
-        .services-section {
-            background: var(--bg-light);
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 30px;
-            border-right: 5px solid var(--secondary-color);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        /* --- قسم القيم --- */
-        .values-section {
-            background: var(--primary-color);
-            color: var(--white);
-            border-radius: 15px;
-            padding: 50px;
-            margin-top: 60px;
-        }
-
-        .values-section h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            color: var(--accent-color);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-
-        .value-item h4 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        /* --- تذييل الصفحة --- */
-        footer {
-            background: #111;
-            color: var(--white);
-            text-align: center;
-            padding: 20px 0;
-        }
+        /* الواجهة */
+        .hero { background: linear-gradient(rgba(26, 42, 108, 0.9), rgba(178, 31, 31, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1350&q=80') center/cover; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        
+        /* الخدمات */
+        .services { padding: 80px 10%; background: var(--bg-light); text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: white; padding: 30px; border-right: 5px solid var(--secondary-color); border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .card h3 { color: var(--primary-color); margin-bottom: 15px; }
+        
+        footer { background: #111; color: white; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
 
     <header>
-        <nav class="navbar">
-            <a href="#home" class="logo-text">آفـاق</a>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">عن آفاق</a></li>
-                <li><a href="#services">ماذا نقدم؟</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="شعار آفاق">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="about.html">عن آفاق</a></li> <li><a href="#services">الخدمات</a></li>
+        </ul>
     </header>
 
-    <section id="home" class="hero">
+    <section class="hero">
         <h1>أهلاً بكم في آفاق</h1>
-        <p>المنصة المتكاملة التي تجمع كافة الخدمات والفرص التي تحتاجها في مكان واحد، بكل سهولة وأمان.</p>
+        <p style="font-size: 1.2rem;">المنصة المتكاملة التي تجمع كافة الخدمات والفرص التي تحتاجها في مكان واحد.</p>
     </section>
 
-    <section id="about" class="section-padding about-section">
-        <span class="about-highlight">‘‘نحن جسركم نحو حياة أفضل‘‘</span>
-        <p class="about-text">
-            منصة "آفاق" هي وجهة إلكترونية رائدة ومبتكرة، صُممت لتكون الجسر الذي يربط الأفراد بفرصهم المستقبلية واحتياجاتهم الأساسية في آن واحد. نحن نؤمن بأن خدمات الحياة يجب أن تكون في متناول الجميع، لذا قمنا بجمع أكثر الخدمات حيوية في منصة واحدة تتسم بالسهولة، الأمان، والسرعة.
-        </p>
-        
-        <div class="values-section">
-            <h3>قيمنا في "آفاق"</h3>
-            <div class="values-grid">
-                <div class="value-item">
-                    <h4>الشفافية</h4>
-                    <p>وضوح تام في كافة الإجراءات والخدمات المقدمة.</p>
-                </div>
-                <div class="value-item">
-                    <h4>التمكين</h4>
-                    <p>تزويد المستخدمين بالأدوات اللازمة لتحسين جودة حياتهم.</p>
-                </div>
-                <div class="value-item">
-                    <h4>الموثوقية</h4>
-                    <p>حماية بياناتكم ومعاملاتكم المالية بأحدث التقنيات الأمنية.</p>
-                </div>
-                <div class="value-item">
-                    <h4>الابتكار</h4>
-                    <p>تطوير مستمر لواجهتنا لتوفير تجربة مستخدم سلسة وبسيطة.</p>
-                </div>
-            </div>
+    <section id="services" class="services">
+        <h2 style="color: var(--primary-color); font-size: 2rem;">ماذا نقدم في آفاق؟</h2>
+        <div class="grid">
+            <div class="card"><h3>آفاق التعليم</h3><p>تسهيل التسجيل في المنح الدراسية والبرامج التعليمية.</p></div>
+            <div class="card"><h3>آفاق السفر</h3><p>حلول متكاملة لإجراءات السفر للدراسة أو العلاج.</p></div>
+            <div class="card"><h3>آفاق العطاء</h3><p>نظام دقيق وشفاف للتسجيل في المساعدات الإنسانية.</p></div>
+            <div class="card"><h3>آفاق الخدمات</h3><p>مظلة واسعة تشمل كافة المعاملات والخدمات اليومية.</p></div>
         </div>
     </section>
 
-    <section id="services" class="section-padding services-section">
-        <h2 class="section-title">ماذا نقدم في آفاق؟</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>آفاق التعليم</h3>
-                <p>نمهد الطريق للطلاب والباحثين عن المعرفة من خلال تسهيل التسجيل في المنح الدراسية والبرامج التعليمية التي تبني مستقبلاً واعداً.</p>
-            </div>
-            <div class="card">
-                <h3>آفاق السفر</h3>
-                <p>نختصر المسافات ونقدم حلولاً متكاملة لإجراءات السفر، سواء كانت لغرض الدراسة، أو العلاج.</p>
-            </div>
-            <div class="card">
-                <h3>آفاق العطاء</h3>
-                <p>نلتزم بمسؤوليتنا الاجتماعية عبر توفير نظام دقيق وشفاف للتسجيل في المساعدات الإنسانية، لضمان وصول الدعم لمن يحتاجه بكرامة وسهولة.</p>
-            </div>
-            <div class="card">
-                <h3>آفاق الخدمات</h3>
-                <p>مظلة واسعة تشمل كافة المعاملات والخدمات التي تلامس تفاصيل حياتكم اليومية والاجتماعية.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
-    </footer>
-
+    <footer><p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p></footer>
 </body>
 </html>
