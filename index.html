@@ -10,66 +10,80 @@
             --forbes-red: #e02020;
             --forbes-black: #000000;
             --white: #ffffff;
-            --bg-light: #f4f7f6; /* اللون الرمادي الفاتح المطلوب */
+            --bg-light: #f4f7f6; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* إضافة خاصية التزحلق السلس */
+        html { scroll-behavior: smooth; }
+        
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             background-color: var(--bg-light); 
             color: #333; 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* --- الهيدر الثابت --- */
+        /* --- الهيدر --- */
         .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
-
         .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
         .logo-text { font-size: 2.8rem; font-weight: 900; color: var(--forbes-black); text-decoration: none; font-family: serif; letter-spacing: -2px; }
         .btn-red { background: var(--forbes-red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
-
         .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 
-        /* --- قسم البطولة الزجاجي (Hero Section) --- */
-        .hero-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 50px 5%;
-        }
-
+        /* --- قسم البطولة الزجاجي (Hero) --- */
+        .hero-container { padding: 60px 5%; display: flex; justify-content: center; }
         .glass-hero {
-            /* تطبيق خاصية الـ Blur والخلفية الشفافة */
             background: rgba(255, 255, 255, 0.4); 
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.6);
-            
             padding: 60px;
             border-radius: 30px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
             width: 100%;
             max-width: 1200px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
         }
-
-        .hero-content { flex: 1; padding-left: 40px; }
+        .hero-content { flex: 1; }
         .hero-content h1 { font-size: 3.5rem; color: var(--forbes-blue); margin-bottom: 20px; font-weight: 900; }
-        .hero-list { list-style: none; font-size: 1.2rem; color: #555; }
-        .hero-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .hero-list { list-style: none; font-size: 1.2rem; color: #555; margin-bottom: 30px; }
+        .hero-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
         .hero-list li::before { content: "✓"; color: var(--forbes-blue); font-weight: bold; }
         
         .hero-image { flex: 1; text-align: left; }
         .hero-image img { max-width: 100%; height: auto; border-radius: 20px; }
 
-        footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; }
+        /* --- قسم المربعات (الخدمات) --- */
+        .services-section { padding: 80px 8%; text-align: center; }
+        .section-title { font-size: 2.2rem; color: var(--forbes-blue); margin-bottom: 50px; font-weight: 800; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            text-decoration: none;
+            color: #333;
+        }
+        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.8); border-color: var(--forbes-blue); }
+        .card-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+        .card h3 { font-size: 1.25rem; color: var(--forbes-blue); margin-bottom: 10px; }
+
+        footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -81,19 +95,14 @@
 
     <header class="main-header">
         <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
-        <div style="width:60%; text-align:center;">
-            <a href="index.html" class="logo-text">AFAQ</a>
-        </div>
-        <div style="width:20%; text-align:left;">
-            <a href="#" class="btn-red">يشترك</a>
-        </div>
+        <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
+        <div style="width:20%; text-align:left;"><a href="#" class="btn-red">يشترك</a></div>
     </header>
 
     <nav class="sub-nav">
         <a href="index.html">الرئيسية</a>
         <a href="about.html">عن آفاق</a>
-        <a href="#">جميع الأعمال</a>
-        <a href="#">VPN</a>
+        <a href="#services">جميع الخدمات</a> 
         <a href="#">تأسيس الشركة</a>
     </nav>
 
@@ -104,14 +113,40 @@
                 <ul class="hero-list">
                     <li>البحث عن أفضل المنتجات للشركات الصغيرة</li>
                     <li>مراجعات ومقارنات لإبقائك على اطلاع</li>
-                    <li>نساعدك في العثور على الأدوات المناسبة لفريقك</li>
                 </ul>
+                <a href="#services" style="display:inline-block; padding: 12px 30px; background: var(--forbes-blue); color:white; text-decoration:none; border-radius:5px; font-weight:bold;">ابدأ الآن</a>
             </div>
             <div class="hero-image">
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--graph-analysis-marketing-strategy-pack-people-illustrations-4712390.png" alt="آفاق">
             </div>
         </div>
     </main>
+
+    <section id="services" class="services-section">
+        <h2 class="section-title">بوابات آفاق المتكاملة</h2>
+        <div class="grid-container">
+            <div class="card">
+                <span class="card-icon">🎓</span>
+                <h3>آفاق التعليم</h3>
+                <p>خدمات المراحل الدراسية</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">✈️</span>
+                <h3>آفاق السفر</h3>
+                <p>إجراءات وتأشيرات</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🤝</span>
+                <h3>آفاق العطاء</h3>
+                <p>مبادرات مجتمعية</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">💼</span>
+                <h3>آفاق الخدمات</h3>
+                <p>تخليص معاملات</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
