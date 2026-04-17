@@ -3,131 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة آفاق - جسرك نحو حياة أفضل</title>
+    <title>آفاق | مستشار الخدمات المتكاملة</title>
     <style>
+        /* --- الألوان والهوية البصرية الدقيقة لـ Forbes --- */
         :root {
-            --primary-blue: #022b7a; 
+            --forbes-blue: #002c6b; /* الأزرق الداكن من الصورة */
+            --forbes-red: #e02020;  /* الأحمر لزر الاشتراك */
+            --forbes-black: #000000;
+            --forbes-grey: #f0f2f5;
             --white: #ffffff;
-            --text-dark: #2d3436;
-            --grey-light: #f7f9fc;
-            --red-forbes: #e02020; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--grey-light); }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--white); color: #333; }
 
-        /* شريط التنقل العلوي */
-        header { background-color: var(--white); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
-        .header-left { display: flex; align-items: center; color: #555; font-size: 0.9rem; }
-        .hamburger-menu { font-size: 1.3rem; margin-right: 15px; cursor: pointer; }
-        
-        .logo-container { display: flex; align-items: center; }
-        .logo-container img { max-height: 45px; width: auto; margin-left: 10px; }
-        .logo-text { font-size: 2.2rem; font-weight: bold; color: var(--text-dark); text-decoration: none; letter-spacing: -1px; }
-        
-        .header-right { display: flex; align-items: center; }
-        .btn-subscribe { background-color: var(--red-forbes); color: var(--white); padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.95rem; transition: background 0.3s; }
-        .btn-subscribe:hover { background-color: #b31a1a; }
-        .icon-search { margin-right: 15px; color: #777; cursor: pointer; }
+        /* --- 1. الشريط العلوي الأسود (Top Bar) --- */
+        .top-bar {
+            background-color: var(--forbes-black);
+            color: var(--white);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        .top-bar-right { display: flex; align-items: center; gap: 8px; }
+        .top-bar-left { display: flex; align-items: center; gap: 20px; }
+        .top-bar a { color: white; text-decoration: none; }
 
-        /* شريط التنقل الفرعي */
-        .sub-header { background-color: var(--white); padding: 0.8rem 5%; display: flex; justify-content: start; border-bottom: 1px solid #eee; }
-        .sub-header a { color: #555; text-decoration: none; font-weight: 500; font-size: 0.95rem; margin-left: 30px; transition: color 0.3s; }
-        .sub-header a:hover { color: var(--primary-blue); }
+        /* --- 2. الشريط الأبيض الرئيسي (Logo Bar) --- */
+        .main-header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .header-side { width: 20%; display: flex; align-items: center; font-weight: bold; font-size: 1.2rem; }
+        .header-center { width: 60%; text-align: center; }
+        .logo-text { font-size: 2.8rem; font-weight: 900; letter-spacing: -2px; color: var(--forbes-black); text-decoration: none; font-family: serif; }
+        .btn-red { background-color: var(--forbes-red); color: white; padding: 8px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
 
-        /* الواجهة الرئيسية */
-        .hero { background-color: var(--primary-blue); color: var(--white); padding: 80px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .hero-content { flex: 1; padding-left: 50px; }
-        .hero-title { font-size: 3rem; margin-bottom: 25px; letter-spacing: -1px; line-height: 1.2; }
-        .hero-check-list { list-style: none; margin-bottom: 40px; }
-        .hero-check-list li { display: flex; align-items: center; font-size: 1.15rem; margin-bottom: 15px; }
-        .hero-check-list li .icon { margin-left: 15px; color: var(--white); font-size: 1.3rem; }
-        .hero-image-placeholder { flex: 1; text-align: center; }
-        .hero-image-placeholder img { max-width: 100%; height: auto; border-radius: 10px; }
+        /* --- 3. شريط الأقسام (Sub Nav) --- */
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .sub-nav a { color: #444; text-decoration: none; transition: 0.3s; }
+        .sub-nav a:hover { color: var(--forbes-blue); }
 
-        /* قسم الخدمات */
-        .services-section { padding: 80px 5%; background-color: var(--grey-light); }
-        .section-title { font-size: 1.3rem; color: var(--primary-blue); margin-bottom: 30px; font-weight: 600; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .card { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); text-align: center; transition: all 0.3s; border: 1px solid #eee; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.06); border-color: #ddd; }
-        .card .card-icon { max-width: 70px; height: auto; margin-bottom: 20px; }
-        .card h3 { font-size: 1.1rem; font-weight: 600; color: var(--primary-blue); line-height: 1.3; }
+        /* --- 4. واجهة البطولة الزرقاء (Hero Section) --- */
+        .hero {
+            background-color: var(--forbes-blue);
+            color: white;
+            padding: 60px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.5rem; margin-bottom: 25px; }
+        .hero-list { list-style: none; }
+        .hero-list li { margin-bottom: 12px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .hero-list li::before { content: "✓"; color: #4aa3ff; font-weight: bold; }
+        .hero-img { flex: 1; text-align: left; }
+        .hero-img img { max-width: 90%; filter: drop-shadow(0 0 20px rgba(0,0,0,0.3)); }
 
-        /* زر التعليم */
-        .btn-education { display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: var(--primary-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: bold; transition: all 0.3s; }
-        .btn-education:hover { background-color: var(--red-forbes); transform: translateY(-1px); }
+        /* --- 5. شبكة الخدمات (White Cards) --- */
+        .services-grid {
+            padding: 60px 8%;
+            background-color: var(--forbes-blue); /* ممتد من الهيرو حسب الصورة */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: var(--white);
+            padding: 30px 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-decoration: none;
+            color: var(--forbes-blue);
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .card h3 { font-size: 1rem; font-weight: bold; }
 
-        footer { background-color: #1a1a1a; color: #bbb; text-align: center; padding: 30px; font-size: 0.9rem; margin-top: 50px; }
+        /* زر التعليم الحكومي */
+        .edu-btn {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            background: var(--forbes-blue);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        footer { text-align: center; padding: 40px; background: #111; color: #777; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-left">
-            <span class="hamburger-menu">☰</span>
-            <span>مستشار آفاق</span>
+    <div class="top-bar">
+        <div class="top-bar-right">
+            <span>☰</span>
+            <a href="#">✉ اشتراك في النشرات الإخبارية</a>
         </div>
-        <div class="logo-container">
-            <img src="logo.png" alt="شعار آفاق">
-            <a href="index.html" class="logo-text">آفـاق</a>
+        <div class="top-bar-left">
+            <a href="#">بحث 🔍</a>
         </div>
-        <div class="header-right">
-            <span class="icon-search">🔍</span>
-            <a href="#contact" class="btn-subscribe">سجل الآن</a>
+    </div>
+
+    <header class="main-header">
+        <div class="header-side">مستشار</div>
+        <div class="header-center">
+            <a href="index.html" class="logo-text">AFAQ</a>
+        </div>
+        <div class="header-side" style="justify-content: flex-end;">
+            <a href="#" class="btn-red">يشترك</a>
         </div>
     </header>
 
-    <nav class="sub-header">
+    <nav class="sub-nav">
         <a href="index.html">الرئيسية</a>
         <a href="about.html">عن آفاق</a>
-        <a href="#services">الخدمات</a>
+        <a href="#">جميع الأعمال</a>
+        <a href="#">VPN</a>
+        <a href="#">تأسيس الشركة</a>
+        <a href="#">برامج الإدارة</a>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">حوّل مسار حياتك مع آفاق</h1>
-            <ul class="hero-check-list">
-                <li><span class="icon">✓</span>جمع أكثر الخدمات حيوية في منصة واحدة.</li>
-                <li><span class="icon">✓</span>تتسم بالسهولة، الأمان، والسرعة.</li>
-                <li><span class="icon">✓</span>شفافية وموثوقية في كافة الإجراءات.</li>
+        <div class="hero-text">
+            <h1>حوّل مشروعك الصغير</h1>
+            <ul class="hero-list">
+                <li>البحث عن أفضل المنتجات والخدمات للشركات الصغيرة</li>
+                <li>مراجعات ومقارنات لإبقائك على اطلاع</li>
+                <li>نساعدك في العثور على الأدوات المناسبة لفريقك</li>
             </ul>
         </div>
-        <div class="hero-image-placeholder">
-            <img src="https://via.placeholder.com/450x300/022b7a/ffffff?text=AFAQ+PLATFORM" alt="رسم توضيحي لآفاق">
+        <div class="hero-img">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--graph-analysis-marketing-strategy-pack-people-illustrations-4712390.png" alt="آفاق">
         </div>
     </section>
 
-    <section id="services" class="services-section">
-        <h2 class="section-title">ماذا نقدم في آفاق؟</h2>
-        <div class="grid-container">
-            
-            <div class="card education-card">
-                <img src="https://via.placeholder.com/70x70?text=%E2%9C%92%EF%B8%8F" alt="أيقونة التعليم" class="card-icon">
-                <h3>آفاق التعليم</h3>
-                <a href="https://eservices.mohe.pna.ps/" target="_blank" class="btn-education">التعليم من المراحل الابتدائية وحتى الثانوية</a>
-            </div>
+    <section class="services-grid">
+        <div class="card">
+            <span class="card-icon">🎓</span>
+            <h3>آفاق التعليم</h3>
+            <a href="https://eservices.mohe.pna.ps/" target="_blank" class="edu-btn">المراحل الدراسية</a>
+        </div>
 
-            <div class="card travel-card">
-                <img src="https://via.placeholder.com/70x70?text=%E2%9C%88%EF%B8%8F" alt="أيقونة السفر" class="card-icon">
-                <h3>آفاق السفر</h3>
-            </div>
+        <div class="card">
+            <span class="card-icon">✈️</span>
+            <h3>آفاق السفر</h3>
+        </div>
 
-            <div class="card charity-card">
-                <img src="https://via.placeholder.com/70x70?text=%E2%99%A5%EF%B8%8F" alt="أيقونة العطاء" class="card-icon">
-                <h3>آفاق العطاء</h3>
-            </div>
+        <div class="card">
+            <span class="card-icon">🤝</span>
+            <h3>آفاق العطاء</h3>
+        </div>
 
-            <div class="card services-card">
-                <img src="https://via.placeholder.com/70x70?text=%E2%98%82%EF%B8%8F" alt="أيقونة الخدمات" class="card-icon">
-                <h3>آفاق الخدمات</h3>
-            </div>
-            
-            <div class="card"><img src="https://via.placeholder.com/70x70?text=$$" alt="أيقونة" class="card-icon"><h3>استشارات مالية</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/70x70?text=⚖️" alt="أيقونة" class="card-icon"><h3>استشارات قانونية</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/70x70?text=🛠️" alt="أيقونة" class="card-icon"><h3>دعم تقني</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/70x70?text=📊" alt="أيقونة" class="card-icon"><h3>تقارير وتحليلات</h3></div>
+        <div class="card">
+            <span class="card-icon">💼</span>
+            <h3>آفاق الخدمات</h3>
+        </div>
 
+        <div class="card">
+            <span class="card-icon">📱</span>
+            <h3>أفضل خدمات VoIP</h3>
+        </div>
+
+        <div class="card">
+            <span class="card-icon">🌐</span>
+            <h3>إنشاء المواقع</h3>
+        </div>
+
+        <div class="card">
+            <span class="card-icon">🛡️</span>
+            <h3>شبكات VPN</h3>
+        </div>
+
+        <div class="card">
+            <span class="card-icon">📊</span>
+            <h3>إدارة المشاريع</h3>
         </div>
     </section>
 
