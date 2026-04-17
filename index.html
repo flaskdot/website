@@ -14,16 +14,17 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        /* إضافة خاصية التزحلق السلس */
-        html { scroll-behavior: smooth; }
         
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             background-color: var(--bg-light); 
             color: #333; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- الهيدر --- */
+        /* --- الهيدر الثابت --- */
         .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
         .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
@@ -32,8 +33,14 @@
         .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 
-        /* --- قسم البطولة الزجاجي (Hero) --- */
-        .hero-container { padding: 60px 5%; display: flex; justify-content: center; }
+        /* --- الواجهة الترحيبية الزجاجية --- */
+        .hero-container { 
+            flex: 1; 
+            padding: 60px 5%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
         .glass-hero {
             background: rgba(255, 255, 255, 0.4); 
             backdrop-filter: blur(15px);
@@ -56,34 +63,10 @@
         .hero-image { flex: 1; text-align: left; }
         .hero-image img { max-width: 100%; height: auto; border-radius: 20px; }
 
-        /* --- قسم المربعات (الخدمات) --- */
-        .services-section { padding: 80px 8%; text-align: center; }
-        .section-title { font-size: 2.2rem; color: var(--forbes-blue); margin-bottom: 50px; font-weight: 800; }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
+        .btn-main { display:inline-block; padding: 12px 30px; background: var(--forbes-blue); color:white; text-decoration:none; border-radius:5px; font-weight:bold; transition: 0.3s; }
+        .btn-main:hover { background: #001a40; transform: scale(1.05); }
 
-        .card {
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            padding: 40px 20px;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-            text-decoration: none;
-            color: #333;
-        }
-        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.8); border-color: var(--forbes-blue); }
-        .card-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
-        .card h3 { font-size: 1.25rem; color: var(--forbes-blue); margin-bottom: 10px; }
-
-        footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 50px; }
+        footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
@@ -102,8 +85,9 @@
     <nav class="sub-nav">
         <a href="index.html">الرئيسية</a>
         <a href="about.html">عن آفاق</a>
-        <a href="#services">جميع الخدمات</a> 
+        <a href="services.html">جميع الخدمات</a> 
         <a href="#">تأسيس الشركة</a>
+        <a href="#">برامج الإدارة</a>
     </nav>
 
     <main class="hero-container">
@@ -112,41 +96,16 @@
                 <h1>حوّل مشروعك<br>الصغير</h1>
                 <ul class="hero-list">
                     <li>البحث عن أفضل المنتجات للشركات الصغيرة</li>
-                    <li>مراجعات ومقارنات لإبقائك على اطلاع</li>
+                    <li>مراجعات ومقارنات لإبقائك على اطلاع دائم</li>
+                    <li>نساعدك في العثور على الأدوات المناسبة لفريقك</li>
                 </ul>
-                <a href="#services" style="display:inline-block; padding: 12px 30px; background: var(--forbes-blue); color:white; text-decoration:none; border-radius:5px; font-weight:bold;">ابدأ الآن</a>
+                <a href="services.html" class="btn-main">استكشف خدماتنا</a>
             </div>
             <div class="hero-image">
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--graph-analysis-marketing-strategy-pack-people-illustrations-4712390.png" alt="آفاق">
             </div>
         </div>
     </main>
-
-    <section id="services" class="services-section">
-        <h2 class="section-title">بوابات آفاق المتكاملة</h2>
-        <div class="grid-container">
-            <div class="card">
-                <span class="card-icon">🎓</span>
-                <h3>آفاق التعليم</h3>
-                <p>خدمات المراحل الدراسية</p>
-            </div>
-            <div class="card">
-                <span class="card-icon">✈️</span>
-                <h3>آفاق السفر</h3>
-                <p>إجراءات وتأشيرات</p>
-            </div>
-            <div class="card">
-                <span class="card-icon">🤝</span>
-                <h3>آفاق العطاء</h3>
-                <p>مبادرات مجتمعية</p>
-            </div>
-            <div class="card">
-                <span class="card-icon">💼</span>
-                <h3>آفاق الخدمات</h3>
-                <p>تخليص معاملات</p>
-            </div>
-        </div>
-    </section>
 
     <footer>
         <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
