@@ -25,6 +25,42 @@
         .hero-image { flex: 1; text-align: left; }
         .hero-image img { max-width: 100%; height: auto; border-radius: 20px; }
         footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; }
+        /* تصميم القائمة الجانبية أو المنسدلة */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* مخفية خارج الشاشة جهة اليمين */
+    width: 250px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: 0.4s;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    padding-top: 60px;
+}
+
+.side-menu.active {
+    right: 0; /* تظهر عند إضافة كلاس active */
+}
+
+.side-menu a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--forbes-blue);
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+/* زر الإغلاق داخل القائمة */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
