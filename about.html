@@ -10,10 +10,7 @@
             --forbes-red: #e02020;
             --forbes-black: #000000;
             --white: #ffffff;
-            /* اللون الرمادي الفاتح للخلفية */
             --bg-light-grey: #f4f7f6; 
-            /* التدرج الذهبي للأيقونات */
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +29,26 @@
         .sub-nav { display: flex; justify-content: center; gap: 25px; padding: 12px 0; background-color: var(--white); border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
 
-        /* --- قسم المحتوى والمربعات الشفافة --- */
+        /* --- تصميم القائمة الجانبية --- */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -250px; /* مخفية */
+            width: 250px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding-top: 60px;
+        }
+        .side-menu.active { right: 0; }
+        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--forbes-blue); font-weight: bold; border-bottom: 1px solid #eee; }
+        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
+
+        /* --- قسم المحتوى والمربعات --- */
         .about-section { padding: 80px 8%; text-align: center; }
         .highlight-title { font-size: 2.5rem; margin-bottom: 20px; font-weight: 900; color: var(--forbes-blue); }
         .sub-title { max-width: 800px; margin: 0 auto 50px; color: #666; line-height: 1.8; font-size: 1.1rem; }
@@ -43,65 +59,58 @@
             gap: 30px;
         }
 
-        /* المربعات الرمادية الفاتحة الشفافة */
         .value-card {
-            background: rgba(255, 255, 255, 0.6); /* لون أبيض بداخل رمادي شفاف */
-            backdrop-filter: blur(10px); /* تأثير الضباب خلف المربع */
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.05); /* حدود ناعمة جداً */
+            border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 40px 25px;
             border-radius: 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* ظل ناعم */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
 
         .value-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: rgba(212, 175, 55, 0.4);
         }
 
-        /* الأيقونات */
-        .value-card .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .value-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--forbes-blue);
-            font-weight: bold;
-        }
-
-        .value-card p {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.6;
-        }
+        .value-card .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .value-card h4 { font-size: 1.4rem; margin-bottom: 15px; color: var(--forbes-blue); font-weight: bold; }
+        .value-card p { font-size: 1rem; color: #555; line-height: 1.6; }
 
         footer { text-align: center; padding: 40px; background: #fff; color: #999; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 50px; }
     </style>
 </head>
 <body>
 
+    <div id="sideMenu" class="side-menu">
+        <span class="close-btn" id="menu-close">&times;</span>
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">عن آفاق</a>
+        <a href="services.html">جميع الأعمال</a>
+        <a href="#">تأسيس الموقع</a>
+    </div>
+
     <div class="top-bar">
-<a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
+        <div style="display: flex; gap: 10px;">
+            <span id="menu-toggle" style="cursor:pointer;">☰</span> 
+            <a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
+        </div>
         <div>بحث 🔍</div>
     </div>
 
     <header class="main-header">
-        <div style="width:20%; font-weight:bold;">مستشار</div>
+        <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
         <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
-        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" class="btn-red">يشترك</a></div>
+        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" target="_blank" class="btn-red">يشترك</a></div>
     </header>
 
     <nav class="sub-nav">
         <a href="index.html">الرئيسية</a>
         <a href="about.html">عن آفاق</a>
-<a href="services.html">جميع الأعمال</a>        <a href="#">VPN</a>
+        <a href="services.html">جميع الأعمال</a>
         <a href="#">تأسيس الموقع</a>
     </nav>
 
@@ -112,7 +121,6 @@
         </p>
 
         <div class="values-grid">
-            
             <div class="value-card">
                 <span class="icon">✨</span>
                 <h4>الشفافية</h4>
@@ -136,13 +144,33 @@
                 <h4>الابتكار</h4>
                 <p>نطور حلولاً تقنية ذكية تجعل الوصول للخدمات الحكومية والخاصة أسهل من أي وقت مضى.</p>
             </div>
-
         </div>
     </section>
 
     <footer>
         <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+
+        // إغلاق عند الضغط خارج المنيو
+        document.addEventListener('click', (e) => {
+            if (!sideMenu.contains(e.target) && e.target !== menuToggle) {
+                sideMenu.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
