@@ -7,7 +7,9 @@
     <style>
         :root { --forbes-blue: #002c6b; --forbes-red: #e02020; --forbes-black: #000000; --white: #ffffff; --bg-light: #f4f7f6; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-light); color: #333; min-height: 100vh; display: flex; flex-direction: column; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-light); color: #333; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        
+        /* الهيدر والقوائم */
         .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
         .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
@@ -15,6 +17,27 @@
         .btn-red { background: var(--forbes-red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
         .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
+
+        /* تصميم المنيو الجانبي */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 250px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding-top: 60px;
+        }
+        .side-menu.active { right: 0; }
+        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--forbes-blue); font-weight: bold; border-bottom: 1px solid #eee; }
+        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
+
+        /* الهيرو */
         .hero-container { flex: 1; padding: 60px 5%; display: flex; justify-content: center; align-items: center; }
         .glass-hero { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.6); padding: 60px; border-radius: 30px; display: flex; align-items: center; width: 100%; max-width: 1200px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05); }
         .hero-content { flex: 1; }
@@ -24,61 +47,41 @@
         .hero-list li::before { content: "✓"; color: var(--forbes-blue); font-weight: bold; }
         .hero-image { flex: 1; text-align: left; }
         .hero-image img { max-width: 100%; height: auto; border-radius: 20px; }
+        
         footer { background: var(--white); padding: 30px; text-align: center; color: #999; border-top: 1px solid #eee; }
-        /* تصميم القائمة الجانبية أو المنسدلة */
-.side-menu {
-    position: fixed;
-    top: 0;
-    right: -250px; /* مخفية خارج الشاشة جهة اليمين */
-    width: 250px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    transition: 0.4s;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    padding-top: 60px;
-}
-
-.side-menu.active {
-    right: 0; /* تظهر عند إضافة كلاس active */
-}
-
-.side-menu a {
-    display: block;
-    padding: 15px 25px;
-    text-decoration: none;
-    color: var(--forbes-blue);
-    font-weight: bold;
-    border-bottom: 1px solid #eee;
-}
-
-/* زر الإغلاق داخل القائمة */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
     </style>
 </head>
 <body>
+
+    <div id="sideMenu" class="side-menu">
+        <span class="close-btn" id="menu-close">&times;</span>
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">عن آفاق</a>
+        <a href="services.html">جميع الأعمال</a>
+        <a href="#">تأسيس الموقع</a>
+    </div>
+
     <div class="top-bar">
-        <div>☰ &nbsp; <a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a></div>
+        <div style="display: flex; gap: 10px;">
+            <span id="menu-toggle" style="cursor:pointer; font-weight:bold;">☰</span> 
+            <a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
+        </div>
         <div>بحث 🔍</div>
     </div>
+
     <header class="main-header">
         <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
         <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
         <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" target="_blank" class="btn-red">يشترك</a></div>
     </header>
+
     <nav class="sub-nav">
         <a href="index.html">الرئيسية</a>
         <a href="about.html">عن آفاق</a>
         <a href="services.html">جميع الأعمال</a>
         <a href="#">تأسيس الموقع</a>
     </nav>
+
     <main class="hero-container">
         <div class="glass-hero">
             <div class="hero-content">
@@ -94,6 +97,27 @@
             </div>
         </div>
     </main>
+
     <footer><p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p></footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.onclick = function() {
+            sideMenu.classList.add('active');
+        };
+
+        menuClose.onclick = function() {
+            sideMenu.classList.remove('active');
+        };
+
+        window.onclick = function(event) {
+            if (event.target == sideMenu) {
+                sideMenu.classList.remove('active');
+            }
+        };
+    </script>
 </body>
 </html>
