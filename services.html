@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات آفاق | بواباتنا المتكاملة</title>
+    <title>جميع الأعمال | آفاق المتكاملة</title>
     <style>
         :root {
             --forbes-blue: #002c6b;
@@ -16,7 +16,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); color: #333; }
 
-        /* الهيدر الثابت */
+        /* الهيدر والمنيو */
         .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
         .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
@@ -25,33 +25,25 @@
         .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
 
-        /* تصميم القائمة الجانبية (Menu) */
         .side-menu {
-            position: fixed;
-            top: 0;
-            right: -250px; /* مخفية في البداية */
-            width: 250px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 1000;
-            transition: 0.4s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            padding-top: 60px;
+            position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
+            z-index: 1000; transition: 0.4s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px;
         }
         .side-menu.active { right: 0; }
         .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--forbes-blue); font-weight: bold; border-bottom: 1px solid #eee; }
         .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
 
-        /* قسم المربعات الزجاجية */
+        /* قسم المربعات */
         .services-container { padding: 60px 8%; text-align: center; }
         .page-title { font-size: 2.5rem; color: var(--forbes-blue); margin-bottom: 40px; font-weight: 900; }
+        .section-label { font-size: 1.2rem; color: var(--forbes-red); font-weight: bold; margin-bottom: 20px; display: block; border-right: 4px solid var(--forbes-red); padding-right: 10px; text-align: right; }
 
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
+            margin-bottom: 50px;
         }
 
         .card {
@@ -72,7 +64,11 @@
 
         .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.8); border-color: var(--forbes-blue); }
         .card-icon { font-size: 3.5rem; margin-bottom: 20px; }
-        .card h3 { font-size: 1.4rem; color: var(--forbes-blue); margin-bottom: 15px; }
+        .card h3 { font-size: 1.3rem; color: var(--forbes-blue); margin-bottom: 10px; font-weight: bold; }
+        .card p { font-size: 0.95rem; color: #666; }
+
+        /* تمييز مربعات المساعدات بلون مختلف خفيف */
+        .card.relief-card { border-bottom: 4px solid var(--forbes-red); }
 
         footer { background: white; padding: 40px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 50px; }
     </style>
@@ -84,7 +80,7 @@
         <a href="index.html">الرئيسية</a>
         <a href="about.html">عن آفاق</a>
         <a href="services.html">جميع الأعمال</a>
-        <a href="#">تأسيس الموقع</a>
+        <a href="setup.html">تأسيس الموقع</a>
     </div>
 
     <div class="top-bar">
@@ -110,6 +106,27 @@
 
     <main class="services-container">
         <h1 class="page-title">بوابات آفاق المتكاملة</h1>
+
+        <span class="section-label">خدمات غزة الإغاثية</span>
+        <div class="grid-container">
+            <a href="#" class="card relief-card">
+                <div class="card-icon">🔥</div>
+                <h3>الفحص عن تعبئة الغاز</h3>
+                <p>كشوفات أسماء تعبئة أنابيب الغاز</p>
+            </a>
+            <a href="#" class="card relief-card">
+                <div class="card-icon">🔑</div>
+                <h3>صرف أكواد المساعدات</h3>
+                <p>متابعة واستلام أكواد المؤسسات</p>
+            </a>
+            <a href="#" class="card relief-card">
+                <div class="card-icon">🏥</div>
+                <h3>متابعة طلب وزارة الصحة</h3>
+                <p>الاستعلام عن التحويلات والطلبات</p>
+            </a>
+        </div>
+
+        <span class="section-label">خدمات عامة</span>
         <div class="grid-container">
             <div class="card"> <div class="card-icon">🎓</div> <h3>آفاق التعليم</h3> <p>بوابة الخدمات التعليمية</p> </div>
             <div class="card"> <div class="card-icon">✈️</div> <h3>آفاق السفر</h3> <p>إجراءات السفر والتأشيرات</p> </div>
@@ -119,7 +136,7 @@
     </main>
 
     <footer>
-        <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
+        <p>منصة آفاق &copy; 2026 - قلوبنا مع غزة</p>
     </footer>
 
     <script>
@@ -127,19 +144,9 @@
         const menuClose = document.getElementById('menu-close');
         const sideMenu = document.getElementById('sideMenu');
 
-        menuToggle.addEventListener('click', () => {
-            sideMenu.classList.add('active');
-        });
-
-        menuClose.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!sideMenu.contains(e.target) && e.target !== menuToggle) {
-                sideMenu.classList.remove('active');
-            }
-        });
+        menuToggle.onclick = () => sideMenu.classList.add('active');
+        menuClose.onclick = () => sideMenu.classList.remove('active');
+        window.onclick = (e) => { if(e.target == sideMenu) sideMenu.classList.remove('active'); }
     </script>
 
 </body>
