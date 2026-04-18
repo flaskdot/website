@@ -17,13 +17,32 @@
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); color: #333; }
 
         /* الهيدر الثابت */
-        .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.85rem; }
+        .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
         .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
         .logo-text { font-size: 2.8rem; font-weight: 900; color: var(--forbes-black); text-decoration: none; font-family: serif; letter-spacing: -2px; }
         .btn-red { background: var(--forbes-red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
         .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
+
+        /* تصميم القائمة الجانبية (Menu) */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -250px; /* مخفية في البداية */
+            width: 250px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding-top: 60px;
+        }
+        .side-menu.active { right: 0; }
+        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--forbes-blue); font-weight: bold; border-bottom: 1px solid #eee; }
+        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
 
         /* قسم المربعات الزجاجية */
         .services-container { padding: 60px 8%; text-align: center; }
@@ -60,15 +79,26 @@
 </head>
 <body>
 
+    <div id="sideMenu" class="side-menu">
+        <span class="close-btn" id="menu-close">&times;</span>
+        <a href="index.html">الرئيسية</a>
+        <a href="about.html">عن آفاق</a>
+        <a href="services.html">جميع الأعمال</a>
+        <a href="#">تأسيس الموقع</a>
+    </div>
+
     <div class="top-bar">
-<a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
+        <div style="display: flex; gap: 10px;">
+            <span id="menu-toggle" style="cursor:pointer;">☰</span> 
+            <a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
+        </div>
         <div>بحث 🔍</div>
     </div>
 
     <header class="main-header">
         <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
         <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
-        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" class="btn-red">يشترك</a></div>
+        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" target="_blank" class="btn-red">يشترك</a></div>
     </header>
 
     <nav class="sub-nav">
@@ -91,6 +121,26 @@
     <footer>
         <p>منصة آفاق &copy; 2026 - جميع الحقوق محفوظة</p>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!sideMenu.contains(e.target) && e.target !== menuToggle) {
+                sideMenu.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
