@@ -3,74 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جميع الأعمال | آفاق المتكاملة</title>
+    <title>جميع الأعمال | آفاق</title>
     <style>
         :root {
-            --forbes-blue: #002c6b;
+            --navy-blue: #002c6b; /* اللون الكحلي الرسمي */
             --forbes-red: #e02020;
-            --forbes-black: #000000;
-            --white: #ffffff;
-            --bg-light: #f4f7f6; 
+            --bg-light: #f4f7f6;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg-light); color: #333; }
 
-        /* الهيدر والمنيو */
-        .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+        /* الهيدر والقوائم */
+        .top-bar { background: #000; color: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
-        .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
-        .logo-text { font-size: 2.8rem; font-weight: 900; color: var(--forbes-black); text-decoration: none; font-family: serif; letter-spacing: -2px; }
+        .main-header { background: #fff; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+        .logo-text { font-size: 2.8rem; font-weight: 900; color: #000; text-decoration: none; font-family: serif; }
         .btn-red { background: var(--forbes-red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
-        .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .sub-nav { background: #fff; display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
         .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
 
-        .side-menu {
-            position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
-            z-index: 1000; transition: 0.4s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px;
-        }
+        .side-menu { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); z-index: 1000; transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px; }
         .side-menu.active { right: 0; }
-        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--forbes-blue); font-weight: bold; border-bottom: 1px solid #eee; }
+        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--navy-blue); font-weight: bold; border-bottom: 1px solid #eee; }
         .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
 
         /* قسم المربعات */
-        .services-container { padding: 60px 8%; text-align: center; }
-        .page-title { font-size: 2.5rem; color: var(--forbes-blue); margin-bottom: 40px; font-weight: 900; }
-        .section-label { font-size: 1.2rem; color: var(--forbes-red); font-weight: bold; margin-bottom: 20px; display: block; border-right: 4px solid var(--forbes-red); padding-right: 10px; text-align: right; }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.4); 
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 40px 25px;
-            border-radius: 20px;
-            transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.8); border-color: var(--forbes-blue); }
-        .card-icon { font-size: 3.5rem; margin-bottom: 20px; }
-        .card h3 { font-size: 1.3rem; color: var(--forbes-blue); margin-bottom: 10px; font-weight: bold; }
-        .card p { font-size: 0.95rem; color: #666; }
-
-        /* تمييز مربعات المساعدات بلون مختلف خفيف */
-        .card.relief-card { border-bottom: 4px solid var(--forbes-red); }
-
-        footer { background: white; padding: 40px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 50px; }
+        .container { padding: 60px 8%; text-align: center; }
+        .section-label { font-size: 1.2rem; color: var(--forbes-red); font-weight: bold; margin: 30px 0 20px; display: block; border-right: 4px solid var(--forbes-red); padding-right: 10px; text-align: right; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.05); padding: 40px 25px; border-radius: 20px; transition: 0.3s; text-decoration: none; color: #333; display: flex; flex-direction: column; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .card:hover { transform: translateY(-10px); background: #fff; border-color: var(--navy-blue); }
+        .card-icon { font-size: 3rem; margin-bottom: 15px; }
+        .card h3 { color: var(--navy-blue); font-size: 1.3rem; margin-bottom: 10px; }
+        
+        footer { padding: 40px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 50px; background: #fff; }
     </style>
 </head>
 <body>
@@ -104,50 +71,42 @@
         <a href="setup.html">تأسيس الموقع</a>
     </nav>
 
-    <main class="services-container">
-        <h1 class="page-title">بوابات آفاق المتكاملة</h1>
+    <div class="container">
+        <h1 style="font-size: 2.5rem; color: var(--navy-blue); font-weight: 900; margin-bottom: 40px;">بوابات آفاق المتكاملة</h1>
 
-        <span class="section-label">خدمات غزة الإغاثية</span>
-        <div class="grid-container">
-            <a href="#" class="card relief-card">
-                <div class="card-icon">🔥</div>
-                <h3>الفحص عن تعبئة الغاز</h3>
-                <p>كشوفات أسماء تعبئة أنابيب الغاز</p>
+        <span class="section-label">خدمات غزة العاجلة</span>
+        <div class="grid">
+            <a href="https://e-gaza.com/check" target="_blank" class="card">
+                <div class="card-icon">⛽</div>
+                <h3>كشوفات تعبئة الغاز</h3>
+                <p>فحص الأسماء المستحقة للتعبئة</p>
             </a>
-            <a href="#" class="card relief-card">
-                <div class="card-icon">🔑</div>
-                <h3>صرف أكواد المساعدات</h3>
-                <p>متابعة واستلام أكواد المؤسسات</p>
+            <a href="https://e-gaza.com/login" target="_blank" class="card">
+                <div class="card-icon">📝</div>
+                <h3>تحديث بيانات الغاز</h3>
+                <p>تحديث معلومات السكن والأسرة</p>
             </a>
-            <a href="#" class="card relief-card">
+            <a href="https://egaza.org/Home/UpdateFile" target="_blank" class="card">
+                <div class="card-icon">🎁</div>
+                <h3>أكواد المساعدات</h3>
+                <p>صرف وفحص أكواد المؤسسات</p>
+            </a>
+            <a href="https://www.sehatty.ps/public/citizen/citizen/referral#" target="_blank" class="card">
                 <div class="card-icon">🏥</div>
-                <h3>متابعة طلب وزارة الصحة</h3>
-                <p>الاستعلام عن التحويلات والطلبات</p>
+                <h3>وزارة الصحة</h3>
+                <p>متابعة التحويلات والطلبات</p>
             </a>
         </div>
+    </div>
 
-        <span class="section-label">خدمات عامة</span>
-        <div class="grid-container">
-            <div class="card"> <div class="card-icon">🎓</div> <h3>آفاق التعليم</h3> <p>بوابة الخدمات التعليمية</p> </div>
-            <div class="card"> <div class="card-icon">✈️</div> <h3>آفاق السفر</h3> <p>إجراءات السفر والتأشيرات</p> </div>
-            <div class="card"> <div class="card-icon">🤝</div> <h3>آفاق العطاء</h3> <p>مبادرات التكافل الاجتماعي</p> </div>
-            <div class="card"> <div class="card-icon">💼</div> <h3>آفاق الخدمات</h3> <p>تخليص المعاملات الحكومية</p> </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>منصة آفاق &copy; 2026 - قلوبنا مع غزة</p>
-    </footer>
+    <footer><p>منصة آفاق &copy; 2026 - خدمة أهلنا في غزة</p></footer>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const sideMenu = document.getElementById('sideMenu');
-
         menuToggle.onclick = () => sideMenu.classList.add('active');
         menuClose.onclick = () => sideMenu.classList.remove('active');
-        window.onclick = (e) => { if(e.target == sideMenu) sideMenu.classList.remove('active'); }
     </script>
-
 </body>
 </html>
