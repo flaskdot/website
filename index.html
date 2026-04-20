@@ -33,11 +33,13 @@
         .hero-text p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px; }
         
         .quick-links { display: flex; gap: 15px; flex-wrap: wrap; }
-        .q-btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .q-btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
         .navy-btn { background: var(--navy); color: white; }
         .outline-btn { border: 2px solid var(--navy); color: var(--navy); }
+        .weather-btn { background: #009688; color: white; } /* لون أخضر مريح لحالة الطقس */
+        .q-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        @media (max-width: 768px) { .glass-box { flex-direction: column; text-align: center; } }
+        @media (max-width: 768px) { .glass-box { flex-direction: column; text-align: center; } .quick-links { justify-content: center; } }
     </style>
 </head>
 <body>
@@ -50,8 +52,9 @@
         <span class="close-btn" id="menu-close">&times;</span>
         <a href="index.html">الرئيسية</a>
         <a href="emergency.html" style="color:var(--red)">🚨 أرقام الطوارئ</a>
+        <a href="services.html">📊 التسجيل في الخدمات الإغاثية</a>
+        <a href="https://palweather.ps/" target="_blank">🌤️ حالة الطقس</a>
         <a href="about.html">عن آفاق</a>
-        <a href="services.html">جميع الأعمال</a>
         <a href="setup.html">تأسيس الموقع</a>
     </div>
 
@@ -70,9 +73,10 @@
         <div class="glass-box">
             <div class="hero-text">
                 <h1>آفاق.. بوابتكم للخدمات في غزة</h1>
-                <p>منصة شاملة تجمع لك كافة الروابط الإغاثية، أرقام الطوارئ، وكشوفات التنسيقات في مكان واحد لتسهيل حياتك.</p>
+                <p>منصة شاملة تجمع لك كافة الروابط الإغاثية، أرقام الطوارئ، وحالة الطقس في مكان واحد لتسهيل حياتك وتوفير وقتك.</p>
                 <div class="quick-links">
-                    <a href="services.html" class="q-btn navy-btn">استكشف الخدمات</a>
+                    <a href="services.html" class="q-btn navy-btn">التسجيل في الخدمات الإغاثية</a>
+                    <a href="https://palweather.ps/" target="_blank" class="q-btn weather-btn">🌤️ حالة الطقس الآن</a>
                     <a href="emergency.html" class="q-btn outline-btn">أرقام الطوارئ عاجل</a>
                 </div>
             </div>
@@ -86,6 +90,13 @@
 
         menuToggle.onclick = () => sideMenu.classList.add('active');
         menuClose.onclick = () => sideMenu.classList.remove('active');
+        
+        // إغلاق القائمة عند النقر خارجها
+        window.onclick = (e) => {
+            if (e.target == sideMenu) {
+                sideMenu.classList.remove('active');
+            }
+        }
     </script>
 </body>
 </html>
