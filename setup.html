@@ -3,122 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تأسيس الموقع | غزة العزة</title>
+    <title>تأسيس الموقع | آفاق</title>
     <style>
-        :root {
-            --forbes-blue: #002c6b;
-            --forbes-red: #e02020;
-            --forbes-black: #000000;
-            --white: #ffffff;
-            --bg-light: #f4f7f6; 
-        }
+        :root { --navy: #002c6b; --red: #e02020; --bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: var(--bg); color: #333; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-light); color: #333; line-height: 1.6; }
-
-        /* الهيدر والمنيو (نفس النظام السابق) */
-        .top-bar { background: var(--forbes-black); color: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+        /* الهيدر والقائمة */
+        .top-bar { background: #000; color: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
-        .main-header { background: var(--white); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
-        .logo-text { font-size: 2.8rem; font-weight: 900; color: var(--forbes-black); text-decoration: none; font-family: serif; letter-spacing: -2px; }
-        .btn-red { background: var(--forbes-red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
-        .sub-nav { background: var(--white); display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #eee; }
-        .sub-nav a { color: #444; text-decoration: none; font-weight: 500; }
+        .main-header { background: #fff; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+        .logo-text { font-size: 2.8rem; font-weight: 900; color: #000; text-decoration: none; font-family: serif; }
+        .btn-red { background: var(--red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
 
-        .side-menu {
-            position: fixed; top: 0; right: -250px; width: 250px; height: 100%;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
-            z-index: 1000; transition: 0.4s ease; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px;
-        }
+        .side-menu { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #fff; z-index: 1000; transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px; }
         .side-menu.active { right: 0; }
-        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--forbes-blue); font-weight: bold; border-bottom: 1px solid #eee; }
-        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
+        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--navy); font-weight: bold; border-bottom: 1px solid #eee; }
+        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--red); }
 
-        /* قسم المحتوى الإنساني */
-        .content-container { padding: 60px 8%; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .glass-box {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 50px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-        }
-        .page-title { color: var(--forbes-red); font-size: 2.2rem; margin-bottom: 30px; font-weight: 900; }
-        .main-text { font-size: 1.3rem; color: #444; text-align: justify; margin-bottom: 40px; }
+        /* محتوى التأسيس */
+        .container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .setup-header { border-bottom: 2px solid var(--navy); padding-bottom: 20px; margin-bottom: 30px; }
+        .setup-header h1 { color: var(--navy); font-size: 2rem; }
         
-        /* أزرار الخدمات السريعة */
-        .action-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .service-btn {
-            background: var(--forbes-blue); color: white; padding: 15px; border-radius: 10px;
-            text-decoration: none; font-weight: bold; transition: 0.3s;
-        }
-        .service-btn:hover { background: #001a40; transform: translateY(-3px); }
+        .content p { line-height: 1.8; margin-bottom: 20px; font-size: 1.1rem; color: #444; }
+        
+        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .service-btn { background: var(--navy); color: white; padding: 15px; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        .service-btn:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        footer { background: white; padding: 40px; text-align: center; color: #999; border-top: 1px solid #eee; margin-top: 50px; }
+        @media (max-width: 600px) { .action-buttons { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<div id="sideMenu" class="side-menu">
-
+    <div id="sideMenu" class="side-menu">
         <span class="close-btn" id="menu-close">&times;</span>
-
-        <a href="index.html">الرئيسية</a>
-
-        <a href="about.html">عن آفاق</a>
-
-        <a href="services.html">جميع الأعمال</a>
-
-        <a href="setup.html">تأسيس الموقع</a>
-
-    <a href="index.html">🏠 الرئيسية</a>
-
-    <a href="emergency.html" style="color: #e02020;">🚨 أرقام الطوارئ</a> <a href="services.html">📊 جميع الأعمال</a>
-
-    <a href="setup.html">🛠️ تأسيس الموقع</a>
+        <a href="index.html">🏠 الرئيسية</a>
+        <a href="emergency.html" style="color:var(--red)">🚨 أرقام الطوارئ</a>
+        <a href="services.html">📋 التسجيل في الخدمات الإغاثية</a>
+        <a href="https://palweather.ps/" target="_blank">🌤️ حالة الطقس</a>
+        <a href="about.html">ℹ️ عن آفاق</a>
+        <a href="setup.html">🛠️ تأسيس الموقع</a>
+    </div>
 
     <div class="top-bar">
-        <div style="display: flex; gap: 10px;">
-            <span id="menu-toggle" style="cursor:pointer;">☰</span> 
-            <a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
-        </div>
-        <div>بحث 🔍</div>
+        <div><span id="menu-toggle" style="cursor:pointer; font-size: 1.5rem;">☰</span></div>
+        <div>منصة آفاق 2026</div>
     </div>
 
     <header class="main-header">
-        <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
-        <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
-        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" target="_blank" class="btn-red">يشترك</a></div>
+        <div style="width:20%;"></div> <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
+        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" class="btn-red">اشترك</a></div>
     </header>
 
-    <nav class="sub-nav">
-        <a href="index.html">الرئيسية</a>
-        <a href="about.html">عن آفاق</a>
-        <a href="services.html">جميع الأعمال</a>
-        <a href="setup.html">تأسيس الموقع</a>
-    </nav>
-
-    <main class="content-container">
-        <div class="glass-box">
-            <h1 class="page-title">مساعدات أهلنا في قطاع غزة</h1>
-            <p class="main-text">
-                هذا الموقع مخصص للمساعدات لاهلنا في قطاع غزة وللتسهيل عليهم في الوصول الى الخدمات التي تقدمها المؤسسات الاغاثية والمؤسسات الانسانية ومن هنا يمكن الفحص عن اسمائكم في تعبئة انابيب الغاز وصرف اكواد المساعدات ويمكن ايضا متابعة حالة طلبكم المقدم في وزارة الصحة نحن معكم دائماً وسيكون هنا متابعة حصرية وتحديث اولاً بأول لكل ما هو جديد نتمنى السلامة التامة ونسأل الله الفرج القريب والعاجل.
-            </p>
-            
-<div class="action-buttons">
-    <a href="https://e-gaza.com/check" target="_blank" class="service-btn" style="background: #002c6b;">فحص تعبئة الغاز</a>
-    <a href="https://e-gaza.com/login" target="_blank" class="service-btn" style="background: #002c6b;">تحديث بيانات الغاز</a>
-    <a href="https://egaza.org/Home/UpdateFile" target="_blank" class="service-btn" style="background: #002c6b;">أكواد المساعدات</a>
-    <a href="https://www.sehatty.ps/public/citizen/citizen/referral#" target="_blank" class="service-btn" style="background: #002c6b;">وزارة الصحة</a>
-</div>
+    <div class="container">
+        <div class="setup-header">
+            <h1>تأسيس الموقع وأهدافه</h1>
         </div>
-    </main>
+        <div class="content">
+            <p>تم تأسيس منصة <strong>آفاق</strong> كاستجابة إنسانية تقنية عاجلة للظروف التي يمر بها قطاع غزة. هدفنا الأساسي هو تجميع شتات الروابط الخدمية في بوابة واحدة سهلة الوصول، تضمن للمواطن الحصول على المعلومة من مصدرها الرسمي بأقل جهد ممكن.</p>
+            <p>نعمل في آفاق على تحديث الروابط المتعلقة بكشوفات الغاز، المساعدات الغذائية، والتحويلات الطبية بشكل يومي، لضمان استمرارية الخدمة حتى في أصعب الظروف.</p>
+        </div>
 
-    <footer>
-        <p>منصة آفاق &copy; 2026 - قلوبنا مع غزة</p>
-    </footer>
+        <div class="action-buttons">
+            <a href="https://e-gaza.com/check" target="_blank" class="service-btn">كشوفات تعبئة الغاز</a>
+            <a href="https://e-gaza.com/login" target="_blank" class="service-btn">تحديث بيانات الغاز</a>
+            <a href="https://egaza.org/Home/UpdateFile" target="_blank" class="service-btn">أكواد المساعدات</a>
+            <a href="https://www.sehatty.ps/public/citizen/citizen/referral#" target="_blank" class="service-btn">وزارة الصحة</a>
+        </div>
+    </div>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
@@ -127,8 +81,6 @@
 
         menuToggle.onclick = () => sideMenu.classList.add('active');
         menuClose.onclick = () => sideMenu.classList.remove('active');
-        window.onclick = (e) => { if(e.target == sideMenu) sideMenu.classList.remove('active'); }
     </script>
-
 </body>
 </html>
