@@ -5,118 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة آفاق | الرئيسية</title>
     <style>
-        <div style="background: #e02020; color: white; padding: 8px; text-align: center; font-size: 0.9rem; font-weight: bold; border-bottom: 2px solid #fff;">
-    <marquee direction="right" scrollamount="6">
-        ⚠️ لمتابعة حالة المعابر يرجى مراجعة الصفحات الرسمية والمواقع المرفقة في أسفل صفحة (جميع الأعمال) لدينا | 📱 لطلب النجدة: يرجى مراجعة صفحة (دليل الطوارئ) الجديدة | 🏥 مستشفى كمال عدوان يناشد الطواقم الطبية للالتحاق بالعمل فوراً | ⏳ تحديث مستمر لخدمتكم
-    </marquee>
-</div>
-        :root {
-            --navy-blue: #002c6b;
-            --forbes-red: #e02020;
-            --bg-light: #f4f7f6;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg-light); color: #333; overflow-x: hidden; }
-<div style="background: var(--forbes-red); color: white; padding: 5px; text-align: center; font-size: 0.9rem; font-weight: bold; border-bottom: 2px solid #fff;">
-    <marquee direction="right" scrollamount="5">
-        🚨 حالة المعابر: كرم أبو سالم (مفتوح جزئياً) | 🏥 تنويه: عيادة النصر الميدانية تعمل حتى 8 مساءً | 💲 سعر الصرف: الدولار/شيكل 3.75 (تقريبي) | 📢 تابعونا عبر تليجرام لكل جديد
-    </marquee>
-</div>
-        /* الهيدر والقائمة الجانبية */
+        :root { --navy: #002c6b; --red: #e02020; --bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: var(--bg); color: #333; overflow-x: hidden; }
+
+        /* شريط الماركي الأحمر */
+        .ticker { background: var(--red); color: white; padding: 8px; font-weight: bold; font-size: 0.9rem; border-bottom: 2px solid #fff; }
+        
         .top-bar { background: #000; color: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
         .top-bar a { color: white; text-decoration: none; }
+        
         .main-header { background: #fff; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
         .logo-text { font-size: 2.8rem; font-weight: 900; color: #000; text-decoration: none; font-family: serif; }
-        .btn-red { background: var(--forbes-red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
-        
-        .side-menu { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); z-index: 1000; transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px; }
+        .btn-red { background: var(--red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+
+        /* المنيو الجانبي */
+        .side-menu { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #fff; z-index: 1000; transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px; }
         .side-menu.active { right: 0; }
-        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--navy-blue); font-weight: bold; border-bottom: 1px solid #eee; }
-        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--forbes-red); }
+        .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--navy); font-weight: bold; border-bottom: 1px solid #eee; }
+        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--red); }
 
-        /* قسم الواجهة (Hero Section) */
-        .hero { padding: 80px 5%; display: flex; align-items: center; justify-content: center; min-height: 80vh; }
-        .hero-glass { 
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255,255,255,0.7); 
-            padding: 60px; 
-            border-radius: 40px; 
-            display: flex; 
-            max-width: 1200px; 
-            gap: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.05);
-        }
+        /* الهيرو */
+        .hero { padding: 50px 5%; min-height: 70vh; display: flex; align-items: center; justify-content: center; }
+        .glass-box { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; display: flex; max-width: 1100px; gap: 30px; border: 1px solid #fff; }
         .hero-text { flex: 1; }
-        .hero-text h1 { font-size: 3.5rem; color: var(--navy-blue); line-height: 1.2; margin-bottom: 20px; font-weight: 900; }
-        .hero-text p { font-size: 1.2rem; color: #555; margin-bottom: 30px; line-height: 1.8; }
+        .hero-text h1 { font-size: 3rem; color: var(--navy); margin-bottom: 20px; }
+        .hero-text p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px; }
         
-        /* أزرار الخدمات السريعة في الرئيسية */
         .quick-links { display: flex; gap: 15px; flex-wrap: wrap; }
-        .q-btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .q-btn-navy { background: var(--navy-blue); color: #fff; }
-        .q-btn-outline { border: 2px solid var(--navy-blue); color: var(--navy-blue); }
-        .q-btn:hover { opacity: 0.8; transform: translateY(-3px); }
+        .q-btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .navy-btn { background: var(--navy); color: white; }
+        .outline-btn { border: 2px solid var(--navy); color: var(--navy); }
 
-        .hero-img { flex: 1; text-align: center; }
-        .hero-img img { max-width: 100%; border-radius: 20px; }
-
-        footer { padding: 40px; text-align: center; color: #999; background: #fff; border-top: 1px solid #eee; }
+        @media (max-width: 768px) { .glass-box { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
+    <div class="ticker">
+        <marquee direction="right">⚠️ لمتابعة حالة المعابر يرجى مراجعة الصفحات الرسمية | 🚨 للاستغاثة: راجع صفحة أرقام الطوارئ | 🏥 مستشفى كمال عدوان يناشد الطواقم الطبية بالالتحاق فوراً</marquee>
+    </div>
+
     <div id="sideMenu" class="side-menu">
         <span class="close-btn" id="menu-close">&times;</span>
         <a href="index.html">الرئيسية</a>
+        <a href="emergency.html" style="color:var(--red)">🚨 أرقام الطوارئ</a>
         <a href="about.html">عن آفاق</a>
         <a href="services.html">جميع الأعمال</a>
         <a href="setup.html">تأسيس الموقع</a>
-    <a href="index.html">🏠 الرئيسية</a>
-    <a href="emergency.html" style="color: #e02020;">🚨 أرقام الطوارئ</a> <a href="services.html">📊 جميع الأعمال</a>
-    <a href="setup.html">🛠️ تأسيس الموقع</a>
-</div>
     </div>
 
     <div class="top-bar">
-        <div style="display: flex; gap: 10px;">
-            <span id="menu-toggle" style="cursor:pointer;">☰</span> 
-            <a href="https://t.me/GZ_2026" target="_blank">✉ اشتراك في النشرات الإخبارية</a>
-        </div>
-        <div>2026 آفاق</div>
+        <div><span id="menu-toggle" style="cursor:pointer; font-size: 1.2rem;">☰</span></div>
+        <div>منصة آفاق 2026</div>
     </div>
 
     <header class="main-header">
-        <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
+        <div style="width:20%;">مستشار</div>
         <div style="width:60%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
-        <div style="width:20%; text-align:left;"><a href="https://t.me/GZ_2026" target="_blank" class="btn-red">يشترك</a></div>
+        <div style="width:20%; text-align:left;"><a href="#" class="btn-red">اشترك</a></div>
     </header>
 
     <main class="hero">
-        <div class="hero-glass">
+        <div class="glass-box">
             <div class="hero-text">
-                <h1>آفاق.. جسركم للوصول <br> والتمكين الرقمي</h1>
-                <p>منصة متكاملة تجمع لك أهم الخدمات الإغاثية والتقنية في مكان واحد، لتسهيل وصول أهلنا في غزة لكافة حقوقهم واحتياجاتهم العاجلة بضغطة زر.</p>
-                
+                <h1>آفاق.. بوابتكم للخدمات في غزة</h1>
+                <p>منصة شاملة تجمع لك كافة الروابط الإغاثية، أرقام الطوارئ، وكشوفات التنسيقات في مكان واحد لتسهيل حياتك.</p>
                 <div class="quick-links">
-                    <a href="services.html" class="q-btn q-btn-navy">استكشف كافة الخدمات</a>
-                    <a href="setup.html" class="q-btn q-btn-outline">قسم مساعدات غزة</a>
+                    <a href="services.html" class="q-btn navy-btn">استكشف الخدمات</a>
+                    <a href="emergency.html" class="q-btn outline-btn">أرقام الطوارئ عاجل</a>
                 </div>
-            </div>
-            <div class="hero-img">
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--graph-analysis-marketing-strategy-pack-people-illustrations-4712390.png" alt="AFAQ">
             </div>
         </div>
     </main>
-
-    <footer>
-        <p>منصة آفاق &copy; 2026 - قلوبنا معكم دائماً</p>
-    </footer>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const sideMenu = document.getElementById('sideMenu');
+
         menuToggle.onclick = () => sideMenu.classList.add('active');
         menuClose.onclick = () => sideMenu.classList.remove('active');
     </script>
