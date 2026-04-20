@@ -5,108 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة آفاق | الرئيسية</title>
     <style>
-        :root { --navy: #002c6b; --red: #e02020; --bg: #f4f7f6; }
+        :root { --navy: #002c6b; --red: #e02020; --bg: #f4f7f6; --purple: #673ab7; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background: var(--bg); color: #333; overflow-x: hidden; }
 
-        /* شريط التنبيهات */
+        /* شريط التنبيهات المحدث */
         .ticker { background: var(--red); color: white; padding: 8px; font-weight: bold; font-size: 0.9rem; border-bottom: 2px solid #fff; }
+        .ticker a { color: #fff; text-decoration: underline; margin-right: 10px; }
         
-        /* البار العلوي (نشرة الأخبار والبحث) */
+        /* البار العلوي */
         .top-bar { background: #000; color: #fff; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
-        .top-bar a { color: white; text-decoration: none; }
-        .menu-icon { cursor: pointer; font-size: 1.5rem; margin-left: 15px; vertical-align: middle; }
+        
+        /* عداد الوقت والتاريخ */
+        .live-clock { background: #eee; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: #333; font-weight: bold; display: flex; gap: 10px; align-items: center; justify-content: center; margin: 10px 0; }
 
-        /* الهيدر الرئيسي (الشعار والاشتراك) */
         .main-header { background: #fff; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
-        .logo-text { font-size: 2.8rem; font-weight: 900; color: #000; text-decoration: none; font-family: serif; letter-spacing: -2px; }
-        .btn-red { background: var(--red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-red:hover { background: #b01a1a; }
+        .logo-text { font-size: 2.8rem; font-weight: 900; color: #000; text-decoration: none; font-family: serif; }
+        .btn-red { background: var(--red); color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; }
 
-        /* المنيو الجانبي */
         .side-menu { position: fixed; top: 0; right: -250px; width: 250px; height: 100%; background: #fff; z-index: 1000; transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); padding-top: 60px; }
         .side-menu.active { right: 0; }
         .side-menu a { display: block; padding: 15px 25px; text-decoration: none; color: var(--navy); font-weight: bold; border-bottom: 1px solid #eee; }
-        .close-btn { position: absolute; top: 15px; left: 15px; font-size: 1.5rem; cursor: pointer; color: var(--red); }
 
-        /* الهيرو والواجهة */
-        .hero { padding: 50px 5%; min-height: 70vh; display: flex; align-items: center; justify-content: center; }
-        .glass-box { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; display: flex; max-width: 1100px; gap: 30px; border: 1px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-        .hero-text { flex: 1; }
-        .hero-text h1 { font-size: 3rem; color: var(--navy); margin-bottom: 20px; font-weight: 900; }
+        .hero { padding: 40px 5%; min-height: 60vh; display: flex; align-items: center; justify-content: center; }
+        .glass-box { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; border: 1px solid #fff; max-width: 1100px; width: 100%; }
         
-        .quick-links { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
-        .q-btn { padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+        .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; justify-content: center; }
+        .q-btn { padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 0.9rem; text-align: center; }
         .navy-btn { background: var(--navy); color: white; }
-        .outline-btn { border: 2px solid var(--navy); color: var(--navy); }
+        .purple-btn { background: var(--purple); color: white; }
         .weather-btn { background: #009688; color: white; }
-        .q-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        @media (max-width: 768px) { .glass-box { flex-direction: column; text-align: center; } .quick-links { justify-content: center; } .logo-text { font-size: 2rem; } }
+        .outline-btn { border: 2px solid var(--red); color: var(--red); }
     </style>
 </head>
 <body>
 
     <div class="ticker">
-        <marquee direction="right">⚠️ لمتابعة حالة المعابر يرجى مراجعة الصفحات الرسمية | 🚨 للاستغاثة: راجع صفحة أرقام الطوارئ | 🏥 مستشفى كمال عدوان يناشد الطواقم الطبية بالالتحاق فوراً</marquee>
+        <marquee direction="right" onmouseover="this.stop();" onmouseout="this.start();">
+            ⚠️ لمتابعة حالة المعابر يرجى مراجعة المواقع المرفقة أسفل الموقع | 🎓 جديد: تم فتح باب التسجيل للمنح الدراسية <a href="https://whatsapp.com/channel/0029VbCAhSzIXnllpb14g001" target="_blank">[اضغط هنا لمتابعة القناة]</a> | 🚨 للاستغاثة: راجع صفحة أرقام الطوارئ 
+        </marquee>
+    </div>
+
+    <div id="sideMenu" class="side-menu">
+        <span class="close-btn" id="menu-close" style="cursor:pointer; position:absolute; top:15px; left:15px;">✕</span>
+        <a href="index.html">🏠 الرئيسية</a>
+        <a href="emergency.html" style="color:var(--red)">🚨 أرقام الطوارئ</a>
+        <a href="scholarships.html" style="color:var(--purple)">🎓 المنح الدراسية</a>
+        <a href="services.html">📋 الخدمات الإغاثية</a>
+        <a href="https://palweather.ps/" target="_blank">🌤️ حالة الطقس</a>
+        <a href="about.html">ℹ️ عن آفاق</a>
     </div>
 
     <div class="top-bar">
-        <div style="display: flex; align-items: center;">
-            <span id="menu-toggle" class="menu-icon">☰</span>
-            <a href="https://t.me/GZ_2026" target="_blank" style="margin-right: 15px;">✉ اشتراك في النشرة الإخبارية</a>
-        </div>
-        <div style="cursor: pointer;">بحث 🔍</div>
+        <div><span id="menu-toggle" style="cursor:pointer; font-size: 1.2rem;">☰ القائمة</span></div>
+        <div id="live-date-top">جاري التحميل...</div>
     </div>
 
     <header class="main-header">
-        <div style="width:20%; font-weight:bold; color:#888;">مستشار</div>
-        <div style="width:60%; text-align:center;">
-            <a href="index.html" class="logo-text">AFAQ</a>
-        </div>
-        <div style="width:20%; text-align:left;">
-            <a href="https://t.me/GZ_2026" target="_blank" class="btn-red">اشتراك</a>
-        </div>
+        <div style="width:25%;"></div>
+        <div style="width:50%; text-align:center;"><a href="index.html" class="logo-text">AFAQ</a></div>
+        <div style="width:25%; text-align:left;"><a href="https://t.me/GZ_2026" target="_blank" class="btn-red">اشتراك</a></div>
     </header>
 
-    <div id="sideMenu" class="side-menu">
-        <span class="close-btn" id="menu-close">&times;</span>
-        <a href="index.html">🏠 الرئيسية</a>
-        <a href="emergency.html" style="color:var(--red)">🚨 أرقام الطوارئ</a>
-        <a href="services.html">📋 التسجيل في الخدمات الإغاثية</a>
-        <a href="scholarships.html" class="q-btn" style="background: #673ab7; color: white;">🎓 منح دراسية (دبلوم - دكتوراه)</a>
-        <a href="https://palweather.ps/" target="_blank">🌤️ حالة الطقس</a>
-        <a href="about.html">ℹ️ عن آفاق</a>
-        <a href="setup.html">🛠️ تأسيس الموقع</a>
+    <div class="live-clock" id="clock-display">
+        <span id="date-part"></span> | <span id="time-part" style="color:var(--red)"></span>
     </div>
 
     <main class="hero">
-        <div class="glass-box">
-            <div class="hero-text">
-                <h1>آفاق.. بوابتكم للخدمات في غزة</h1>
-                <p>منصة شاملة تجمع لك كافة الروابط الإغاثية، أرقام الطوارئ، وحالة الطقس في مكان واحد لتسهيل حياتك وتوفير وقتك.</p>
-                <div class="quick-links">
-                    <a href="services.html" class="q-btn navy-btn">التسجيل في الخدمات الإغاثية</a>
-                    <a href="https://palweather.ps/" target="_blank" class="q-btn weather-btn">🌤️ حالة الطقس الآن</a>
-                    <a href="emergency.html" class="q-btn outline-btn">أرقام الطوارئ عاجل</a>
-                </div>
+        <div class="glass-box" style="text-align: center;">
+            <h1 style="font-size: 2.5rem; color: var(--navy); margin-bottom: 15px;">بوابتكم للخدمات في غزة</h1>
+            <p>المعلومة الموثقة والوصول السريع للخدمات الإغاثية والتعليمية في مكان واحد.</p>
+            
+            <div class="quick-links">
+                <a href="services.html" class="q-btn navy-btn">📋 التسجيل الإغاثي</a>
+                <a href="scholarships.html" class="q-btn purple-btn">🎓 منح دراسية 2026</a>
+                <a href="https://palweather.ps/" target="_blank" class="q-btn weather-btn">🌤️ حالة الطقس</a>
+                <a href="emergency.html" class="q-btn outline-btn">🚨 أرقام الطوارئ</a>
             </div>
         </div>
     </main>
 
     <script>
-        // تفعيل المنيو الجانبي (☰)
+        // تفعيل القائمة
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const sideMenu = document.getElementById('sideMenu');
+        menuToggle.onclick = () => sideMenu.classList.add('active');
+        menuClose.onclick = () => sideMenu.classList.remove('active');
 
-        menuToggle.onclick = () => { sideMenu.classList.add('active'); };
-        menuClose.onclick = () => { sideMenu.classList.remove('active'); };
+        // وظيفة تحديث الوقت والتاريخ
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', calendar: 'islamic-uma' };
+            
+            // التاريخ بالعربي
+            const dateStr = now.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+            // الوقت
+            const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-        // إغلاق المنيو عند النقر في أي مكان خارجها
-        window.onclick = (e) => {
-            if (e.target == sideMenu) { sideMenu.classList.remove('active'); }
+            document.getElementById('date-part').textContent = dateStr;
+            document.getElementById('time-part').textContent = timeStr;
+            document.getElementById('live-date-top').textContent = dateStr;
         }
+
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
 </body>
 </html>
