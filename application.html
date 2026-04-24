@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة التقديم الإلكتروني | آفاق</title>
+    <style>
+        :root { --navy: #002c6b; --red: #e02020; --bg: #f4f7f6; --gold: #b8860b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); color: #333; line-height: 1.6; }
+
+        .header { background: var(--navy); color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
+        .container { max-width: 800px; margin: -30px auto 50px; padding: 20px; }
+        
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+        .status-badge { background: #d4edda; color: #155724; padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+
+        .info-box { background: #fff3cd; border-right: 5px solid #ffeeba; padding: 20px; text-align: right; margin: 20px 0; border-radius: 10px; }
+        
+        /* أزرار التقديم */
+        .apply-btn { display: block; background: var(--navy); color: white; padding: 20px; margin: 15px 0; border-radius: 12px; text-decoration: none; font-size: 1.2rem; font-weight: bold; transition: 0.3s; border: 2px solid transparent; }
+        .apply-btn:hover { background: white; color: var(--navy); border-color: var(--navy); transform: scale(1.02); }
+        
+        .moh-btn { background: #28a745; } /* لون أخضر للصحة */
+        .moh-btn:hover { color: #28a745; border-color: #28a745; background: white; }
+
+        .footer-note { font-size: 0.85rem; color: #777; margin-top: 30px; }
+        .back-link { display: inline-block; margin-top: 20px; color: var(--navy); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>بوابة التقديم والطلبات الرسمية</h1>
+        <p>يرجى اختيار جهة التقديم من القائمة أدناه</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <span class="status-badge">● البوابة تعمل بكفاءة</span>
+            
+            <div class="info-box">
+                <strong>تنبيه هام:</strong> تأكد من إرفاق كافة الوثائق المطلوبة بصيغة PDF قبل البدء بعملية التسجيل لضمان قبول الطلب.
+            </div>
+
+            <a href="https://www.sehatty.ps/public/citizen/citizen/referral#" target="_blank" class="apply-btn moh-btn">
+                🏥 التقديم عبر بوابة وزارة الصحة الفلسطينية
+            </a>
+
+            <a href="https://www.iefa.org/" target="_blank" class="apply-btn">
+                🎓 تقديم طلب المنح الدراسية الدولية
+            </a>
+
+            <a href="#" class="apply-btn" style="background: var(--gold);">
+                📝 تقديم طلب مساعدة عاجلة (قيد التجهيز)
+            </a>
+
+            <p class="footer-note">سيتم توجيهك الآن إلى الموقع الرسمي للجهة المختارة. منصة آفاق هي وسيط لتسهيل الوصول فقط.</p>
+            
+            <a href="index.html" class="back-link">⬅ العودة إلى الرئيسية</a>
+        </div>
+    </div>
+
+</body>
+</html>
