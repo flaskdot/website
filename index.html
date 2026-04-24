@@ -31,11 +31,12 @@
         .glass-box { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; border: 1px solid #fff; max-width: 1100px; width: 100%; }
         
         .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; justify-content: center; }
-        .q-btn { padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 0.9rem; text-align: center; }
+        .q-btn { padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 0.9rem; text-align: center; min-width: 180px; }
         .navy-btn { background: var(--navy); color: white; }
         .purple-btn { background: var(--purple); color: white; }
         .weather-btn { background: #009688; color: white; }
         .outline-btn { border: 2px solid var(--red); color: var(--red); }
+        .q-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -47,8 +48,9 @@
     </div>
 
     <div id="sideMenu" class="side-menu">
-        <span class="close-btn" id="menu-close" style="cursor:pointer; position:absolute; top:15px; left:15px;">✕</span>
+        <span class="close-btn" id="menu-close" style="cursor:pointer; position:absolute; top:15px; left:15px; font-size: 1.5rem; color: var(--red);">✕</span>
         <a href="index.html">🏠 الرئيسية</a>
+        <a href="application.html" style="color: var(--navy);">📝 بوابة تقديم الطلبات</a>
         <a href="emergency.html" style="color:var(--red)">🚨 أرقام الطوارئ</a>
         <a href="scholarships.html" style="color:var(--purple)">🎓 المنح الدراسية</a>
         <a href="services.html">📋 الخدمات الإغاثية</a>
@@ -77,7 +79,8 @@
             <p>المعلومة الموثقة والوصول السريع للخدمات الإغاثية والتعليمية في مكان واحد.</p>
             
             <div class="quick-links">
-                <a href="services.html" class="q-btn navy-btn">📋 التسجيل الإغاثي</a>
+                <a href="application.html" class="q-btn navy-btn">📝 بوابة تقديم الطلبات</a>
+                <a href="services.html" class="q-btn navy-btn" style="background: #2196F3;">📋 التسجيل الإغاثي</a>
                 <a href="scholarships.html" class="q-btn purple-btn">🎓 منح دراسية 2026</a>
                 <a href="https://palweather.ps/" target="_blank" class="q-btn weather-btn">🌤️ حالة الطقس</a>
                 <a href="emergency.html" class="q-btn outline-btn">🚨 أرقام الطوارئ</a>
@@ -86,21 +89,27 @@
     </main>
 
     <script>
-        // تفعيل القائمة
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const sideMenu = document.getElementById('sideMenu');
-        menuToggle.onclick = () => sideMenu.classList.add('active');
+        
+        menuToggle.onclick = (e) => {
+            e.stopPropagation();
+            sideMenu.classList.add('active');
+        };
+        
         menuClose.onclick = () => sideMenu.classList.remove('active');
 
-        // وظيفة تحديث الوقت والتاريخ
+        // إغلاق المنيو عند النقر في أي مكان آخر بالصفحة
+        document.onclick = (e) => {
+            if (!sideMenu.contains(e.target) && e.target !== menuToggle) {
+                sideMenu.classList.remove('active');
+            }
+        };
+
         function updateClock() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', calendar: 'islamic-uma' };
-            
-            // التاريخ بالعربي
             const dateStr = now.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-            // الوقت
             const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
             document.getElementById('date-part').textContent = dateStr;
